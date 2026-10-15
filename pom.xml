@@ -28,6 +28,11 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<!-- SonarQube Cloud Properties -->
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.organization>balajiinba</sonar.organization>
+		<sonar.projectKey>BalajiInba_demo</sonar.projectKey>
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -108,6 +113,32 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.12</version>
+				<executions>
+					<!-- Sets up the runtime agent before tests run -->
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<!-- Generates the HTML code coverage report after tests run -->
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>5.8.0.7211</version>
 			</plugin>
 		</plugins>
 	</build>
